@@ -139,22 +139,22 @@ if [ $FWTYPE == "dynamic" ]; then
 
         MIN_SDK_VERSION=$(get_min_sdk "${TARGETDIR}/lib/libcrypto.a")
         if [[ $PLATFORM == AppleTVSimulator* ]]; then
-            MIN_SDK="-tvos_simulator_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version tvos-simulator $MIN_SDK_VERSION $SDKVERSION"
         elif [[ $PLATFORM == AppleTV* ]]; then
-            MIN_SDK="-tvos_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version tvos $MIN_SDK_VERSION $SDKVERSION"
         elif [[ $PLATFORM == MacOSX* ]]; then
-            MIN_SDK="-macosx_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version macos $MIN_SDK_VERSION $SDKVERSION"
         elif [[ $PLATFORM == Catalyst* ]]; then
-            MIN_SDK="-platform_version mac-catalyst $MIN_SDK_VERSION $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version mac-catalyst $MIN_SDK_VERSION $SDKVERSION"
             PLATFORM="MacOSX"
         elif [[ $PLATFORM == iPhoneSimulator* ]]; then
-            MIN_SDK="-ios_simulator_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version ios-simulator $MIN_SDK_VERSION $SDKVERSION"
         elif [[ $PLATFORM == WatchOS* ]]; then
-            MIN_SDK="-watchos_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version watchos $MIN_SDK_VERSION $SDKVERSION"
         elif [[ $PLATFORM == WatchSimulator* ]]; then
-            MIN_SDK="-watchos_simulator_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version watchos-simulator $MIN_SDK_VERSION $SDKVERSION"
         else
-            MIN_SDK="-ios_version_min $MIN_SDK_VERSION"
+            MIN_SDK="-platform_version ios $MIN_SDK_VERSION $SDKVERSION"
         fi
 
         CROSS_TOP="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer"
